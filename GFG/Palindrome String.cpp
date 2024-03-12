@@ -2,8 +2,7 @@
 
 class Solution{
 public:	
-	
-	
+
 	int isPalindrome(string S)
 	{
 	    int left = 0;
