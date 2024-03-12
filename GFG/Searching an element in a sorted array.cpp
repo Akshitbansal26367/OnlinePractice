@@ -1,4 +1,10 @@
-int searchInSorted(int arr[], int N, int K) 
+class Solution{
+    public:
+    // Function to find element in sorted array
+    // arr: input array
+    // N: size of array
+    // K: element to be searche
+    int searchInSorted(int arr[], int N, int K) 
     { 
         int left = 0;
         int right = N - 1;
@@ -18,3 +24,4 @@ int searchInSorted(int arr[], int N, int K)
         
         return -1;
     }
+};
