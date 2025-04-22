@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
+    /*vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
         inorder(root, ans);
         return ans;
@@ -12,5 +12,24 @@ public:
         inorder(root->left, ans);
         ans.push_back(root->val);
         inorder(root->right, ans);
+    }*/
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        stack<TreeNode*> st;
+        TreeNode* curr = root;
+        vector<int> ans;
+
+        while (curr != NULL || !st.empty()) {
+            while (curr != NULL) {
+                st.push(curr);
+                curr = curr->left;
+            }
+
+            curr = st.top();
+            st.pop();
+            ans.push_back(curr->val);
+            curr = curr->right;
+        }
+        return ans;
     }
 };
