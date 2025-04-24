@@ -13,7 +13,7 @@ public:
         return ans;
     }*/
 
-    vector<int> postorderTraversal(TreeNode* root) {
+    /*vector<int> postorderTraversal(TreeNode* root) {
         vector<int> postOrder;
         if (root == NULL)
             return postOrder;
@@ -36,6 +36,34 @@ public:
             TreeNode* node = s2.top();
             s2.pop();
             postOrder.push_back(node->val);
+        }
+        return postOrder;
+    }*/
+
+    vector<int> postorderTraversal(TreeNode* root) {
+        TreeNode* curr = root;
+        stack<TreeNode*> st;
+        vector<int> postOrder;
+
+        while (curr != NULL || !st.empty()) {
+            if (curr != NULL) {
+                st.push(curr);
+                curr = curr->left;
+            } else {
+                TreeNode* temp = st.top()->right;
+                if (temp == NULL) {
+                    temp = st.top();
+                    st.pop();
+                    postOrder.push_back(temp->val);
+
+                    while (!st.empty() && temp == st.top()->right) {
+                        temp = st.top();
+                        st.pop();
+                        postOrder.push_back(temp->val);
+                    }
+                } else
+                    curr = temp;
+            }
         }
         return postOrder;
     }
